@@ -1,0 +1,14 @@
+@import "bourbon";
+
+.editor-styles-wrapper {
+
+	@import "settings/_index";
+	@import "utilities/_index";
+	@import "components/_index";
+	@import "elements/forms";
+	@import "elements/lists";
+	@import "elements/typography";
+	@import "elements/other";
+	@import "plugins/_index";
+	@import "objects/_index";
+}

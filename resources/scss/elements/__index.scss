@@ -1,0 +1,16 @@
+@import "buttons";
+@import "forms";
+@import "lists";
+@import "media";
+@import "typography";
+@import "other";
+
+html,
+body {
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+}
+
+*, :after, :before {
+	box-sizing: inherit;
+}

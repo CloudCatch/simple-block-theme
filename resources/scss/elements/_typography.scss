@@ -1,0 +1,25 @@
+a {
+
+	@include transition();
+}
+
+sup {
+	font-size: 75%;
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+	a {
+		text-decoration: none;
+
+		@include hover-focus {
+			text-decoration: none;
+		}
+	}
+}

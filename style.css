@@ -1,0 +1,13 @@
+/*
+ * Theme Name: Simple Block Theme
+ * Theme URI: https://github.com/CloudCatch/simple-block-theme
+ * Author: CloudCatch LLC
+ * Author URI: https://cloudcatch.io
+ * Description: Simple starter WordPress block theme
+ * Version: 0.0.0-development
+ * License: GPL-3.0
+ * Text Domain: simple-block-theme
+ * Domain Path: /languages
+ */
+
+.hidden{clip:rect(1px,1px,1px,1px);border:0;-webkit-clip-path:inset(100%);clip-path:inset(100%);height:1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px}.wp-block-button.has-custom-width .wp-block-button__link{min-width:0}@media(max-width:781px){.wp-block-columns.is-style-separator{gap:var(--wp--style--block-gap)}.wp-block-columns.is-style-separator>.wp-block-column:not(:first-child){border-top:1px solid var(--wp--preset--color--light-soft-gray);padding-top:var(--wp--style--block-gap)}}@media(min-width:782px){.wp-block-columns.is-style-separator>.wp-block-column:not(:first-child){border-left:1px solid var(--wp--preset--color--light-soft-gray);padding-left:var(--wp--style--block-gap)}}.wp-block-columns.is-style-separator.is-not-stacked-on-mobile>.wp-block-column:not(:first-child){border-left:1px solid var(--wp--preset--color--light-soft-gray);border-top:0;padding-left:var(--wp--preset--spacing--20);padding-top:0}.wp-block-cover{padding-left:0;padding-right:0}.wp-block-cover.alignfull{padding-left:var(--wp--style--root--padding-left);padding-right:var(--wp--style--root--padding-right)}.wp-block-separator{width:100%}.wp-block-verse{background:transparent;font:inherit;margin:0 0 0 4rem;padding:0}.wp-block-table-of-contents ol,.wp-block-table-of-contents ul{padding-left:2em}.wp-block-table-of-contents ol ol{list-style-type:lower-roman}.wp-block-table-of-contents li{line-height:1.2;margin:var(--wp--preset--spacing--8) 0}embed,iframe,object,video{max-width:100%;width:100%}img{height:auto;max-width:100%;vertical-align:top}iframe{border:0}a{transition:all .25s cubic-bezier(.645,.045,.355,1)}sup{font-size:75%;vertical-align:top}h1 a,h1 a:focus,h1 a:hover,h2 a,h2 a:focus,h2 a:hover,h3 a,h3 a:focus,h3 a:hover,h4 a,h4 a:focus,h4 a:hover,h5 a,h5 a:focus,h5 a:hover,h6 a,h6 a:focus,h6 a:hover{text-decoration:none}body,html{box-sizing:border-box;scroll-behavior:smooth}*,:after,:before{box-sizing:inherit}

@@ -1,0 +1,24 @@
+{
+    "name": "cloudcatch/simple-block-theme",
+    "description": "Simple starter WordPress block theme",
+    "type": "wordpress-theme",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "CloudCatch LLC",
+            "email": "david@cloudcatch.io"
+        }
+    ],
+    "require-dev": {
+        "php-stubs/wordpress-stubs": "^v6.2.0",
+        "automattic/vipwpcs": "^2.3",
+        "wp-coding-standards/wpcs": "^2.3",
+        "squizlabs/php_codesniffer": "^3.7",
+        "phpcompatibility/phpcompatibility-wp": "^2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
