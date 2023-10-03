@@ -22,12 +22,5 @@
             "experimentalObjectRestSpread": true,
             "jsx": true
         }
-    },
-    "overrides": [
-        {
-          "rules": {
-            "@wordpress/no-unsafe-wp-apis": "off"
-          }
-        }
-      ]
+    }
 }

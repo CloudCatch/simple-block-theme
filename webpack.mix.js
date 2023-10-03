@@ -10,34 +10,34 @@
 
 // Import required packages.
 const mix = require('laravel-mix');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const packageJson = require('./package.json');
 const prependFile = require('prepend-file');
 const path = require('path');
-const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 
 /*
  * Monitor files for changes and inject your changes into the browser.
  *
  */
 if (process.env.sync) {
-    var bs = require("browser-sync").create();
+	var bs = require('browser-sync').create();
 
-    bs.init({
-        notify: false,
-        proxy: process.env.MIX_PROXY,
-        port: process.env.MIX_PORT,
-        files: [
-            'assets/**/.js',
-            'assets/**/.css',
-            'patterns/*',
-            'parts/*',
-            'templates/*',
-            'functions.php',
-            '*.css',
-        ]
-    });
+	bs.init({
+		notify: false,
+		proxy: process.env.MIX_PROXY,
+		port: process.env.MIX_PORT,
+		files: [
+			'assets/**/.js',
+			'assets/**/.css',
+			'patterns/*',
+			'parts/*',
+			'templates/*',
+			'functions.php',
+			'*.css',
+		],
+	});
 }
 
 /*
@@ -45,7 +45,6 @@ if (process.env.sync) {
  */
 
 mix.disableNotifications();
-
 
 /*
  * -----------------------------------------------------------------------------
@@ -77,8 +76,8 @@ mix.setPublicPath('./');
  * @link https://laravel.com/docs/5.6/mix#url-processing
  */
 mix.options({
-    postCss: [require('postcss-preset-env')()],
-    processCssUrls: false
+	postCss: [require('postcss-preset-env')()],
+	processCssUrls: false,
 });
 
 /*
@@ -102,13 +101,9 @@ mix.version();
  *
  * @link https://laravel.com/docs/5.6/mix#working-with-scripts
  */
-mix
-    .js([
-        `${devPath}/js/index.js`
-    ], `${distPath}/js/main.js`)
-    .js([
-        `${devPath}/js/editor.js`
-    ], `${distPath}/js/editor.js`).react();
+mix.js([`${devPath}/js/index.js`], `${distPath}/js/main.js`)
+	.js([`${devPath}/js/editor.js`], `${distPath}/js/editor.js`)
+	.react();
 
 /*
  * Compile CSS. Mix supports Sass, Less, Stylus, and plain CSS, and has functions
@@ -120,51 +115,59 @@ mix
  */
 
 // Sass configuration.
-var sassConfig = {
-    sassOptions: {
-        outputStyle: 'compressed',
-        indentType: 'tab',
-        indentWidth: 1
-    }
+const sassConfig = {
+	sassOptions: {
+		outputStyle: 'compressed',
+		indentType: 'tab',
+		indentWidth: 1,
+	},
 };
 
 // Compile SASS/CSS.
-mix
-    .sass(`${devPath}/scss/style.scss`, `./style.css`, sassConfig).options({
-        postCss: [
-            require('cssnano')({
-                preset: ['default', {
-                    discardComments: {
-                        removeAll: true,
-                    },
-                }]
-            })
-        ]
-    }).then(async (stats) => {
-        // Generate blank stylesheet.
-        const banner = [
-            '/*',
-            ' * Theme Name: ' + packageJson.theme.name,
-            ' * Theme URI: ' + packageJson.theme.uri,
-            ' * Author: ' + packageJson.author,
-            ' * Author URI: ' + packageJson.theme.authoruri,
-            ' * Description: ' + packageJson.description,
-            ' * Version: ' + packageJson.version,
-            ' * License: ' + packageJson.license,
-            ' * Text Domain: ' + packageJson.name,
-            ' * Domain Path: ' + packageJson.theme.domainpath,
-            ' */\n\n',
-        ].join('\n');
+mix.sass(`${devPath}/scss/style.scss`, `./style.css`, sassConfig)
+	.options({
+		postCss: [
+			require('cssnano')({
+				preset: [
+					'default',
+					{
+						discardComments: {
+							removeAll: true,
+						},
+					},
+				],
+			}),
+		],
+	})
+	.then(async (stats) => {
+		// Generate blank stylesheet.
+		const banner = [
+			'/*',
+			' * Theme Name: ' + packageJson.theme.name,
+			' * Theme URI: ' + packageJson.theme.uri,
+			' * Author: ' + packageJson.author,
+			' * Author URI: ' + packageJson.theme.authoruri,
+			' * Description: ' + packageJson.description,
+			' * Version: ' + packageJson.version,
+			' * License: ' + packageJson.license,
+			' * Text Domain: ' + packageJson.name,
+			' * Domain Path: ' + packageJson.theme.domainpath,
+			' */\n\n',
+		].join('\n');
 
-        await prependFile('style.css', banner);
+		await prependFile('style.css', banner);
 
-        if (process.env.sync) {
-            bs.reload("*.css");
-        }
+		if (process.env.sync) {
+			bs.reload('*.css');
+		}
 
-        console.log('\x1b[34m', '\nstyle.css banner generated.');
-    })
-    .sass(`${devPath}/scss/editor.scss`, `${distPath}/css/editor.css`, sassConfig);
+		console.log('\x1b[34m', '\nstyle.css banner generated.');
+	})
+	.sass(
+		`${devPath}/scss/editor.scss`,
+		`${distPath}/css/editor.css`,
+		sassConfig
+	);
 
 /*
  * Add custom Webpack configuration.
@@ -177,37 +180,50 @@ mix
  * @link https://webpack.js.org/configuration/
  */
 mix.webpackConfig({
-    stats: 'minimal',
-    devtool: process.env.NODE_ENV === 'production' ? false : 'eval',
-    performance: { hints: false },
-    externals: { jquery: 'jQuery' },
-    plugins: [
-        new DependencyExtractionWebpackPlugin(),
-        // @link https://github.com/webpack-contrib/copy-webpack-plugin
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: `${devPath}/img`, to: `${distPath}/img` },
-                { from: `${devPath}/svg`, to: `${distPath}/svg` },
-                { from: `${devPath}/fonts`, to: `${distPath}/fonts` }
-            ],
-        }),
-        // @link https://github.com/Klathmon/imagemin-webpack-plugin
-        new ImageminPlugin({
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            disable: process.env.NODE_ENV !== 'production',
-            optipng: { optimizationLevel: 3 },
-            gifsicle: { optimizationLevel: 3 },
-            pngquant: {
-                quality: '65-90',
-                speed: 4
-            },
-            svgo: {
-                plugins: [
-                    { cleanupIDs: false },
-                    { removeViewBox: false },
-                    { removeUnknownsAndDefaults: false }
-                ]
-            }
-        })
-    ]
+	stats: 'minimal',
+	devtool: process.env.NODE_ENV === 'production' ? false : 'eval',
+	performance: { hints: false },
+	externals: { jquery: 'jQuery' },
+	plugins: [
+		new DependencyExtractionWebpackPlugin(),
+		// @link https://github.com/webpack-contrib/copy-webpack-plugin
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: `${devPath}/img`, to: `${distPath}/img` },
+				{ from: `${devPath}/svg`, to: `${distPath}/svg` },
+				{ from: `${devPath}/fonts`, to: `${distPath}/fonts` },
+			],
+		}),
+		// @link https://github.com/webpack-contrib/image-minimizer-webpack-plugin
+		new ImageMinimizerPlugin({
+			test: /\.(jpe?g|png|gif)$/i,
+			minimizer: {
+				implementation: ImageMinimizerPlugin.sharpMinify,
+				options: {
+					encodeOptions: {
+						// Your options for `sharp`
+						// https://sharp.pixelplumbing.com/api-output
+					},
+				},
+			},
+		}),
+		new ImageMinimizerPlugin({
+			test: /\.svg$/i,
+			minimizer: {
+				implementation: ImageMinimizerPlugin.svgoMinify,
+				options: {
+					encodeOptions: {
+						multipass: true,
+						plugins: [
+							'cleanupIds',
+							'cleanupEnableBackground',
+							'convertStyleToAttrs',
+							'preset-default',
+							'removeAttrs',
+						],
+					},
+				},
+			},
+		}),
+	],
 });
