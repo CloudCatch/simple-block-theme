@@ -13,7 +13,7 @@ echo "Installing JS dependencies..."
 npm i
 
 echo "Running JS Build..."
-npm run build:prod || exit "$?"
+npm run build || exit "$?"
 
 echo "Generating translations..."
 npm run i18n || exit "$?"
