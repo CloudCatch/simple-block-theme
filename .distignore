@@ -29,6 +29,7 @@
 .gitignore
 .jsbeautifyrc
 .lintstagedrc
+.nvmrc
 .prettierignore
 .releaserc.js
 .stylelintignore

@@ -22,21 +22,14 @@
 		<exclude name="WordPress-VIP-Go"/>
 		<exclude name="Squiz.PHP.CommentedOutCode.Found"/>
 	</rule>
-	<!-- Verify that no WP functions are used which are deprecated or removed. -->
-	<rule ref="WordPress.WP.DeprecatedFunctions">
-		<properties>
-			<property name="minimum_supported_version" value="6.2"/>
-		</properties>
-	</rule>
 	<!-- Check all globals have the expected prefix. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<property name="prefixes" type="array" value="simple-block-theme"/>
+			<property name="prefixes" type="array" value="SimpleBlockTheme"/>
 		</properties>
 	</rule>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<!-- Value: replace the text domain used. -->
 			<property name="text_domain" type="array" value="simple-block-theme"/>
 		</properties>
 	</rule>

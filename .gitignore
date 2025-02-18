@@ -2,6 +2,7 @@
 .env
 composer.lock
 assets
+blocks
 build
 languages
 node_modules

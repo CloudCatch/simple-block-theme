@@ -2,17 +2,17 @@
 
 module.exports = {
     extends: [
-        '@wordpress/stylelint-config',
-        'prettier-stylelint/config.js',
-        'stylelint-config-recommended-scss',
-        '@wordpress/stylelint-config/scss',
-    ],
+		'@wordpress/stylelint-config',
+		'stylelint-config-recommended-scss',
+		'@wordpress/stylelint-config/scss',
+	],
     plugins: 'stylelint-order',
     ignoreFiles: ['style.css', '**/*.js', '**/*.php', 'LICENSE'],
+    ignorePatterns: ['style.css', '**/*.js', '**/*.php', 'LICENSE'],
     rules: {
+        'no-empty-source': null,
         'block-no-empty': null,
         'font-family-no-missing-generic-family-keyword': null,
-        'max-line-length': 255,
         'no-duplicate-selectors': null,
         'no-descending-specificity': null,
         'no-invalid-position-at-import-rule': null,
@@ -20,14 +20,6 @@ module.exports = {
         'selector-class-pattern': null,
         'function-url-quotes': 'always',
         'font-family-name-quotes': 'always-unless-keyword',
-        'selector-list-comma-newline-after': [
-            'always-multi-line',
-            {
-                message:
-                    'Expected newline after "," in a multi-line list. Stylelint can\'t automatically correct this at the moment.',
-                severity: 'warning',
-            },
-        ],
         'selector-pseudo-element-colon-notation': 'single',
         'order/order': [
             'at-variables',

@@ -1,4 +1,7 @@
+assets/
+blocks/
 node_modules/
 vendor/
-assets/js/*.js
+
 stylelint.config.js
+webpack.config.js

@@ -2,58 +2,43 @@
   "name": "simple-block-theme",
   "version": "0.0.0-development",
   "description": "Simple starter WordPress block theme",
-  "main": "src/index.js",
+  "author": "CloudCatch LLC",
+  "license": "GPL-2.0-or-later",
   "keywords": [
     "wordpress-theme"
   ],
-  "author": "CloudCatch LLC",
-  "license": "GPL-3.0",
-  "theme": {
-    "name": "Simple Block Theme",
-    "uri": "https://github.com/CloudCatch/simple-block-theme",
-    "authoruri": "https://cloudcatch.io",
-    "domainpath": "/languages"
+  "homepage": "https://cloudcatch.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CloudCatch/simple-block-theme.git"
   },
-  "scripts": {
-    "build": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "start": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "cross-env sync=1 NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "lint": "npm run lint:styles && npm run lint:scripts && npm run lint:php",
-    "lint:styles": "cross-env stylelint './resources/scss/**/*.scss'",
-    "lint:scripts": "cross-env eslint",
-    "lint:php": "cross-env ./vendor/bin/phpcs . --runtime-set testVersion 8.0- -s",
-    "i18n": "npm run i18n:textdomain && npm run i18n:pot",
-    "i18n:textdomain": "npx wpi18n addtextdomain --exclude=vendor,tests,node_modules",
-    "i18n:pot": "npx wpi18n makepot --domain-path=languages",
-    "theme-zip": "bash ./bin/build-zip.sh"
+  "bugs": {
+    "url": "https://github.com/CloudCatch/simple-block-theme/issues"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.15",
-    "@babel/preset-react": "^7.22.15",
-    "@wordpress/dependency-extraction-webpack-plugin": "^4.25.0",
-    "@wordpress/eslint-plugin": "^16.0.0",
-    "@wordpress/icons": "^9.33.0",
-    "@wordpress/stylelint-config": "^21.25.0",
-    "bourbon": "^7.3.0",
-    "browser-sync": "^2.29.3",
-    "browser-sync-webpack-plugin": "^2.3.0",
-    "copy-webpack-plugin": "^11.0.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.50.0",
-    "image-minimizer-webpack-plugin": "^3.8.3",
-    "laravel-mix": "^6.0.49",
-    "node-wp-i18n": "^1.2.7",
-    "postcss-preset-env": "^9.1.4",
-    "prepend-file": "^2.0.1",
-    "prettier": "^3.0.3",
-    "prettier-stylelint": "^0.4.2",
-    "sass": "^1.68.0",
-    "sass-loader": "^13.3.2",
-    "semantic-release": "^22.0.5",
+    "@wordpress/dependency-extraction-webpack-plugin": "^6.18.0",
+    "@wordpress/eslint-plugin": "^22.4.0",
+    "@wordpress/icons": "^10.18.0",
+    "@wordpress/scripts": "^30.11.0",
+    "@wordpress/stylelint-config": "^23.10.0",
+    "classnames": "^2.5.1",
+    "copy-webpack-plugin": "^12.0.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "remove-files-webpack-plugin": "^1.5.0",
+    "semantic-release": "^24.2.3",
     "semantic-release-plugin-update-version-in-files": "^1.1.0",
-    "sharp": "^0.32.6",
-    "stylelint-order": "^6.0.3",
-    "svgo": "^3.0.2"
+    "stylelint-order": "^6.0.4"
+  },
+  "scripts": {
+    "start": "wp-scripts start --source-path=src/blocks/block-library",
+    "build": "wp-scripts build --source-path=src/blocks/block-library",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "lint:md:docs": "wp-scripts lint-md-docs",
+    "lint:php": "phpcs",
+    "lint:pkg-json": "wp-scripts lint-pkg-json",
+    "packages-update": "wp-scripts packages-update",
+    "i18n": "wp i18n make-pot . ./languages/your-theme-name.pot",
+    "theme-zip": "bash ./bin/build-zip.sh"
   }
 }
