@@ -3,6 +3,8 @@
 	<description>PHPCS Ruleset for a WordPress Theme</description>
 	<!-- Check files in this directory and subdirectories. -->
 	<file>functions.php</file>
+	<file>inc/</file>
+	<file>src/blocks/block-library/</file>
 	<!-- Prevent sniffs of some directories. -->
 	<exclude-pattern>vendor/*</exclude-pattern>
 	<exclude-pattern>tests/*</exclude-pattern>
