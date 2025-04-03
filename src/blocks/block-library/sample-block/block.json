@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "simple-block-theme/sample",
+	"title": "Sample Block",
+	"category": "simple-block-theme",
+	"description": "Displays a sample block.",
+	"textdomain": "simple-block-theme",
+	"attributes": {},
+	"supports": {
+		"align": false,
+		"html": false,
+		"interactivity": false
+	},
+	"style": "file:./style-index.css",
+	"editorStyle": "file:./index.css",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js"
+}

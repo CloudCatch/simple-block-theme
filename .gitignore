@@ -1,11 +1,11 @@
 .DS_Store
 .env
 composer.lock
-assets
-blocks
-build
-languages
+
 node_modules
-themes
 vendor
-style.css
+
+/assets
+/blocks
+/build
+/languages

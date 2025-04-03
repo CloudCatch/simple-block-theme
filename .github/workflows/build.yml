@@ -10,19 +10,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+
+      - name: Set up theme Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Setup WP-CLI
+        run: |
+          curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+          chmod +x wp-cli.phar
+          sudo mv wp-cli.phar /usr/local/bin/wp
 
       - name: Install dependencies
         run: |
-          npm i
+          npm i --no-audit --no-fund --omit=optional
           npm run i18n
-          npm run build:prod
+          npm run build
 
       - name: Semantic release
         id: semantic
-        uses: cycjimmy/semantic-release-action@v2
+        uses: cycjimmy/semantic-release-action@v4
         with:
-          semantic_version: 17
+          semantic_version: 24
           branches: | 
             ['master']
         env:
@@ -40,7 +51,7 @@ jobs:
 
       - name: Release
         if: steps.semantic.outputs.new_release_published == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.semantic.outputs.new_release_version }}
           files: |

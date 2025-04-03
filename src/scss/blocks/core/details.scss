@@ -1,0 +1,29 @@
+.wp-block-details {
+
+    @media (prefers-reduced-motion: no-preference) {
+        interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+        display: block;
+        overflow-y: clip;
+        opacity: 0;
+        transition: content-visibility 1s allow-discrete, opacity 1s, block-size 1s;
+        transition-duration: 0.425s;
+        block-size: 0;
+    }
+
+    &[open]::details-content {
+        block-size: auto;
+        opacity: 1;
+
+        @supports (block-size: calc-size\(auto, size\)) {
+            block-size: calc-size\(auto, size\);
+        }
+    }
+
+    /* Remove the margin from the first child of the summary */
+    summary + * {
+        margin-block-start: 0;
+    }
+}

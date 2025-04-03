@@ -16,11 +16,11 @@
     "url": "https://github.com/CloudCatch/simple-block-theme/issues"
   },
   "devDependencies": {
-    "@wordpress/dependency-extraction-webpack-plugin": "^6.18.0",
-    "@wordpress/eslint-plugin": "^22.4.0",
-    "@wordpress/icons": "^10.18.0",
-    "@wordpress/scripts": "^30.11.0",
-    "@wordpress/stylelint-config": "^23.10.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^6.21.0",
+    "@wordpress/eslint-plugin": "^22.7.0",
+    "@wordpress/icons": "^10.21.0",
+    "@wordpress/scripts": "^30.14.1",
+    "@wordpress/stylelint-config": "^23.13.0",
     "classnames": "^2.5.1",
     "copy-webpack-plugin": "^12.0.2",
     "mini-css-extract-plugin": "^2.9.2",
@@ -35,10 +35,10 @@
     "lint:css": "wp-scripts lint-style",
     "lint:js": "wp-scripts lint-js",
     "lint:md:docs": "wp-scripts lint-md-docs",
-    "lint:php": "phpcs",
+    "lint:php": "./vendor/bin/phpcs",
     "lint:pkg-json": "wp-scripts lint-pkg-json",
     "packages-update": "wp-scripts packages-update",
-    "i18n": "wp i18n make-pot . ./languages/your-theme-name.pot",
+    "i18n": "wp i18n make-pot . ./languages/simple-block-theme.pot",
     "theme-zip": "bash ./bin/build-zip.sh"
   }
 }

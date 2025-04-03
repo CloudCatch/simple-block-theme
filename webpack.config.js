@@ -102,6 +102,12 @@ const themeScriptsConfig = {
 			include: '*.scss',
 			outputFolder: `css`,
 		} ),
+		...getEntries( {
+			root: `${ srcDir }/scss/blocks`,
+			include: '**/*.scss',
+			outputFolder: `css/blocks`,
+			blockDir: true,
+		} ),
 	},
 	output: {
 		filename: '[name].js',
