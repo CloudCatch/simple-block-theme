@@ -22,9 +22,9 @@ add_filter( 'should_load_separate_core_block_assets', '__return_true' );
  * @return void
  */
 function enqueue_scripts() {
-	$style_asset = include get_theme_file_path( 'assets/css/style.asset.php' );
+	$style_asset = include get_theme_file_path( 'assets/css/main.asset.php' );
 
-	wp_enqueue_style( 'simple-block-theme-style', get_theme_file_uri( 'assets/css/style.css' ), $style_asset['dependencies'], $style_asset['version'] );
+	wp_enqueue_style( 'simple-block-theme-style', get_theme_file_uri( 'assets/css/main.css' ), $style_asset['dependencies'], $style_asset['version'] );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_scripts' );
 
