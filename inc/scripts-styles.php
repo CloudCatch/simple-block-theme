@@ -29,33 +29,15 @@ function enqueue_scripts() {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_scripts' );
 
 /**
- * Register module scripts and styles
- *
- * @return void
- */
-function register_module_scripts() {
-	// Register any module stylesheets.
-	$style_modules = glob( get_stylesheet_directory() . '/assets/css/modules/*.css' );
-	foreach ( $style_modules as $style_module ) {
-		$style_module_asset = include get_stylesheet_directory() . '/assets/css/modules/' . str_replace( '.css', '.asset.php', basename( $style_module ) );
-
-		wp_register_style( 'ns-' . basename( $style_module, '.css' ), get_stylesheet_directory_uri() . '/assets/css/modules/' . basename( $style_module ), $style_module_asset['dependencies'], $style_module_asset['version'] );
-	}
-}
-add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_module_scripts' );
-
-/**
  * Enqueue block assets
  *
  * @return void
  */
 function block_assets() {
-	wp_register_script_module( 'Swiper', get_theme_file_uri( 'assets/js/modules/swiper.js' ) );
-
 	if ( is_admin() ) {
 		$editor_style_asset = include get_theme_file_path( 'assets/css/editor.asset.php' );
 
-		wp_enqueue_style( 'ns-editor', get_theme_file_uri( 'assets/css/editor.css' ), $editor_style_asset['dependencies'], $editor_style_asset['version'] );
+		wp_enqueue_style( 'simple-block-theme-editor', get_theme_file_uri( 'assets/css/editor.css' ), $editor_style_asset['dependencies'], $editor_style_asset['version'] );
 	}
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\block_assets' );
@@ -68,7 +50,7 @@ add_action( 'enqueue_block_assets', __NAMESPACE__ . '\block_assets' );
 function enqueue_block_editor_scripts() {
 	$editor_script_asset = include get_theme_file_path( 'assets/js/editor.asset.php' );
 
-	wp_enqueue_script( 'ns-editor', get_theme_file_uri( 'assets/js/editor.js' ), $editor_script_asset['dependencies'], $editor_script_asset['version'], true );
+	wp_enqueue_script( 'simple-block-theme-editor', get_theme_file_uri( 'assets/js/editor.js' ), $editor_script_asset['dependencies'], $editor_script_asset['version'], true );
 }
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_block_editor_scripts' );
 
