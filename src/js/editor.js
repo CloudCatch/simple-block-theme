@@ -1,15 +1,21 @@
-wp.domReady( () => {
-	wp.blocks.registerBlockStyle( 'core/button', {
+/**
+ * WordPress dependencies
+ */
+import domReady from '@wordpress/dom-ready';
+import { registerBlockStyle } from '@wordpress/blocks';
+
+domReady( () => {
+	registerBlockStyle( 'core/button', {
 		name: 'outline',
 		label: 'Outline',
 	} );
 
-	wp.blocks.registerBlockStyle( 'core/columns', {
+	registerBlockStyle( 'core/columns', {
 		name: 'separator',
 		label: 'Separator',
 	} );
 
-	wp.blocks.registerBlockStyle( 'core/navigation-link', {
+	registerBlockStyle( 'core/navigation-link', {
 		name: 'button',
 		label: 'Button',
 	} );
