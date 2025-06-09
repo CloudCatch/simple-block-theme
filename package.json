@@ -16,16 +16,16 @@
     "url": "https://github.com/CloudCatch/simple-block-theme/issues"
   },
   "devDependencies": {
-    "@wordpress/dependency-extraction-webpack-plugin": "^6.21.0",
-    "@wordpress/eslint-plugin": "^22.7.0",
-    "@wordpress/icons": "^10.21.0",
-    "@wordpress/scripts": "^30.14.1",
-    "@wordpress/stylelint-config": "^23.13.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^6.25.0",
+    "@wordpress/eslint-plugin": "^22.11.0",
+    "@wordpress/icons": "^10.25.0",
+    "@wordpress/scripts": "^30.18.0",
+    "@wordpress/stylelint-config": "^23.17.0",
     "classnames": "^2.5.1",
     "copy-webpack-plugin": "^12.0.2",
     "mini-css-extract-plugin": "^2.9.2",
     "remove-files-webpack-plugin": "^1.5.0",
-    "semantic-release": "^24.2.3",
+    "semantic-release": "^24.2.5",
     "semantic-release-plugin-update-version-in-files": "^1.1.0",
     "stylelint-order": "^6.0.4"
   },
